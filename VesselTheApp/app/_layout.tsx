@@ -6,7 +6,7 @@ const Layout = () => {
   return (
     <Stack screenOptions={{ headerShadowVisible: false }}>
       <Stack.Screen
-        name="(tabs)/index"
+        name="(tabs)"
         options={{
           headerLeft: () => <AntDesign name="user" size={24} color="black" />,
           headerRight: () => (
