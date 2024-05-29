@@ -1,9 +1,27 @@
 import { Stack } from "expo-router";
+import { Image } from "react-native";
+import { Ionicons, AntDesign, FontAwesome6 } from "@expo/vector-icons";
 
-export default function RootLayout() {
+const Layout = () => {
   return (
-    <Stack>
-      <Stack.Screen name="index" />
+    <Stack screenOptions={{ headerShadowVisible: false }}>
+      <Stack.Screen
+        name="(tabs)/index"
+        options={{
+          headerLeft: () => <AntDesign name="user" size={24} color="black" />,
+          headerRight: () => (
+            <Ionicons name="settings-outline" size={24} color="black" />
+          ),
+          headerTitle: () => (
+            <FontAwesome6 name="sailboat" size={24} color="black" />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="details"
+        options={{ headerTitle: "Details", headerBackTitle: "Back" }}
+      />
     </Stack>
   );
-}
+};
+export default Layout;
