@@ -54,35 +54,11 @@ const InfoCarousel = () => {
 };
 
 const styles = StyleSheet.create({
-  itemContainer: {
-    marginTop: 20,
-    backgroundColor: "white",
-    borderRadius: 8,
-    padding: 20,
-    justifyContent: "center",
-    height: 350,
-  },
-  itemImg: {
-    width: 150,
-    height: 150,
-    borderRadius: 75,
-    marginBottom: 10,
-  },
-  itemTitle: {
-    fontSize: 24,
-    fontWeight: "bold",
-    textAlign: "center",
-    marginBottom: 3,
-  },
-  itemBody: {
-    fontSize: 14,
-    textAlign: "center",
-    marginTop: 5,
-  },
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    height: 350,
   },
   paginatorContainer: {
     alignItems: "center",
