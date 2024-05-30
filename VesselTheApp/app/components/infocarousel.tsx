@@ -46,7 +46,9 @@ const InfoCarousel = () => {
           ref={slidesRef}
         />
       </View>
-      <Paginator items={dummyDataForCarousel} scrollX={scrollX} />
+      <View style={styles.paginatorContainer}>
+        <Paginator items={dummyDataForCarousel} scrollX={scrollX} />
+      </View>
     </View>
   );
 };
@@ -81,6 +83,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  paginatorContainer: {
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 
