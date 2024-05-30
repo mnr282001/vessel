@@ -12,6 +12,7 @@ import {
 
 import dummyDataForCarousel from "./dummydataforcarousel";
 import InfoCarouselItem from "./infocarouselitem";
+import Paginator from "./paginator";
 
 const InfoCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -26,7 +27,7 @@ const InfoCarousel = () => {
   ).current;
 
   return (
-    <View>
+    <View styles={styles.container}>
       <View style={{ flex: 3 }}>
         <FlatList
           data={dummyDataForCarousel}
@@ -45,6 +46,7 @@ const InfoCarousel = () => {
           ref={slidesRef}
         />
       </View>
+      <Paginator items={dummyDataForCarousel} scrollX={scrollX} />
     </View>
   );
 };
@@ -74,6 +76,11 @@ const styles = StyleSheet.create({
     fontSize: 14,
     textAlign: "center",
     marginTop: 5,
+  },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
