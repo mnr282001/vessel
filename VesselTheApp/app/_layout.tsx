@@ -18,8 +18,8 @@ const Layout = () => {
         }}
       />
       <Stack.Screen
-        name="details"
-        options={{ headerTitle: "Details", headerBackTitle: "Back" }}
+        name="nearyoudetails"
+        options={{ headerTitle: "Near You", headerBackTitle: "Back" }}
       />
     </Stack>
   );
