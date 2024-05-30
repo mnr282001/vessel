@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import {
   Dimensions,
   Text,
@@ -6,18 +6,45 @@ import {
   Image,
   StyleSheet,
   FlatList,
+  Animated,
+  ViewToken,
 } from "react-native";
 
 import dummyDataForCarousel from "./dummydataforcarousel";
 import InfoCarouselItem from "./infocarouselitem";
 
 const InfoCarousel = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const scrollX = useRef(new Animated.Value(0)).current;
+  const slidesRef = useRef(null);
+
+  const viewableItemsChanged = useRef(
+    (info: { viewableItems: Array<ViewToken> }) => {
+      const firstViewableItem = info.viewableItems[0];
+      setCurrentIndex(firstViewableItem?.index ?? 0);
+    }
+  ).current;
+
   return (
     <View>
-      <FlatList
-        data={dummyDataForCarousel}
-        renderItem={({ item }) => <InfoCarouselItem item={item} />}
-      />
+      <View style={{ flex: 3 }}>
+        <FlatList
+          data={dummyDataForCarousel}
+          renderItem={({ item }) => <InfoCarouselItem item={item} />}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          pagingEnabled
+          bounces={false}
+          keyExtractor={(item) => item.id.toString()}
+          onScroll={Animated.event(
+            [{ nativeEvent: { contentOffset: { x: scrollX } } }],
+            { useNativeDriver: false }
+          )}
+          scrollEventThrottle={32}
+          onViewableItemsChanged={viewableItemsChanged}
+          ref={slidesRef}
+        />
+      </View>
     </View>
   );
 };
@@ -44,9 +71,9 @@ const styles = StyleSheet.create({
     marginBottom: 3,
   },
   itemBody: {
-    fontSize: 14, // body text font size
-    textAlign: "center", // center the body text
-    marginTop: 5, // margin from the top
+    fontSize: 14,
+    textAlign: "center",
+    marginTop: 5,
   },
 });
 

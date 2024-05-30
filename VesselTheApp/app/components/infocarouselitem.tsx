@@ -6,8 +6,9 @@ import {
   StyleSheet,
 } from "react-native";
 import React from "react";
-import { TabBarItem } from "react-native-tab-view";
+
 type CarouselItem = {
+  id: number;
   imgUrl: string;
   title: string;
   body: string;
