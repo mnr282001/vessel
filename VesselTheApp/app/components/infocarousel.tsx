@@ -27,7 +27,7 @@ const InfoCarousel = () => {
   ).current;
 
   return (
-    <View styles={styles.container}>
+    <View style={styles.container}>
       <View style={{ flex: 3 }}>
         <FlatList
           data={dummyDataForCarousel}
